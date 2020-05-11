@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h2> Employee Management System</h2>
+
+<div class="AddEmployeeTitleContainer">
+  <div class="addEmployeeTitleContainer">
+    <div >Add Employee</div>
+</div>
+<div class="addEmployeeBtnContainer">
+  <div class="addNewEmployeeBtn" (click)="addNewEmployeeBtn()">+</div>
+</div>
+</div>
+
+<div *ngIf="newEmployeeClicked">
+<div class="formWrapper">
+<form>
+  <div class="form-group name">
+    <!-- <label for="name">Name:</label> -->
+    <input type="text"
+           class="form-control input"
+           id="name"
+           name="name"
+           [(ngModel)]="model.name"
+           placeholder="Name">
+  </div>
+
+  <div class="form-group id">
+    <!-- <label for="id">ID:</label> -->
+    <input type="text"
+           class="form-control input"
+           id="id"
+           name="id"
+           [(ngModel)]="model.id"
+           placeholder="ID">
+  </div>
+
+<div class="form-group phoneno">
+    <!-- <label for="phoneno">Phoneno:</label> -->
+    <input type="text"
+           class="form-control input"
+           id="phoneno"
+           name="phoneno"
+           [(ngModel)]="model.phoneno"
+           placeholder="Phoneno">
+  </div>
+
+   <div class="form-group location">
+    <!-- <label for="location">Location:</label> -->
+    <input type="text"
+           class="form-control locationInput"
+           id="location"
+           name="location"
+           [(ngModel)]="model.location"
+           placeholder="Location">
+  </div>
+  <div class="submitBtnContainer">
+    <button type="submit" class="saveBtn" (click)="addEmployee()">SAVE</button>
+  </div>
+</form>
+</div>
+</div>
+
+
+<div class="tableWrapper">
+<div class="containerTitle">
+  <div class="oneTitle">Name</div>
+  <div class="twoTitle">ID</div>
+  <div class="threeTitle">Phoneno</div>
+  <div class="fourTitle">Location</div>
+  <div class="fiveTitle">Actions</div>
+  <!-- <div class="six"></div> -->
+</div>
+
+<div class="containerListItems" *ngFor="let employee of employees; let i = index" [style.background-color]="changeColorOne()">
+  <div class="one">{{employee.name}}</div>
+  <div class="two">{{employee.id}}</div>
+  <div class="three">{{employee.phoneno}}</div>
+  <div class="four">{{employee.location}}</div>
+  <div class="five">
+   <button (click)="editEmployee(i)"><i class="fa fa-pencil-square-o"></i></button> &nbsp;
+    <button (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
+  </div>
+  <!-- <div class="six"></div> -->
+</div>
+</div>
+
+
+
+<div class="editEmployeeTitleContainer">
+  <div class="">Edit Employee</div>
+</div>
+
+<form>
+  <div class="form-group name">
+    <!-- <label for="name">Name:</label> -->
+    <input type="text"
+           class="form-control"
+           id="name"
+           name="name"
+           [(ngModel)]="model2.name"
+           placeholder="Name">
+  </div>
+
+<div class="form-group id">
+    <!-- <label for="id">ID:</label> -->
+    <input type="text"
+           class="form-control "
+           id="id"
+           name="id"
+           [(ngModel)]="model2.id"
+           placeholder="ID">
+  </div>
+
+  <div class="form-group phoneno">
+    <!-- <label for="phoneno">Phoneno:</label> -->
+    <input type="text"
+           class="form-control"
+           id="phoneno"
+           name="phoneno"
+           [(ngModel)]="model2.phoneno"
+           placeholder="Phoneno">
+  </div> 
+
+   <div class="form-group location">
+    <!-- <label for="location">Location:</label> -->
+    <input type="text"
+           class="form-control"
+           id="location"
+           name="location"
+           [(ngModel)]="model2.location"
+           placeholder="Location">
+  </div>
+  <button type="submit" (click)="updateEmployee()">UPDATE</button>
+</form>
